@@ -1,12 +1,12 @@
+# -*- coding: UTF-8 -*-
 import copy
+import json
 import logging
+import os
+
 import requests
-from global_config import config_log
 from config.confRead import Config
 import urllib.parse
-
-# 初始化日志配置
-config_log()
 
 
 class HttpBaseManager:
@@ -119,3 +119,32 @@ class HttpBaseManager:
             )
 
         return ret_code, ret_data
+
+    def download_file(self, requests_method, url, filename, params):
+        """下载文件"""
+        headers = self.generate_headers()
+        response = requests.request(requests_method, url, headers=headers, data=json.dumps(params))
+        assert response.status_code == 200
+        # 确保请求成功
+        if response is None:
+            logging.debug("Error: Response is None")
+            return
+
+        # 确保响应的状态码为200
+        if response.status_code != 200:
+            raise Exception("Error: Response status code is not 200")
+
+        # 将文件写入到本地
+        with open(filename, 'wb') as f:
+            f.write(response.content)
+
+        # 断言文件存在
+        assert os.path.exists(filename)
+
+        # 断言文件大小
+        actual_file_size = os.path.getsize(filename)
+        assert actual_file_size > 0
+        logging.debug(actual_file_size)
+
+        # 删除文件
+        os.remove(filename)

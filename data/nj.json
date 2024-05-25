@@ -1,0 +1,20 @@
+{
+  "nj_search": [
+    {
+      "statement": "nj_search xi",
+      "question": "西瓜",
+      "answer": "西瓜",
+      "search_type": "question",
+      "page": "1",
+      "page_size": "5"
+    },
+    {
+      "statement": "nj_search pi",
+      "question": "苹果",
+      "answer": "苹果",
+      "search_type": "question",
+      "page": "1",
+      "page_size": "5"
+    }
+  ]
+}

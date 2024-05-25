@@ -1,0 +1,18 @@
+{
+  "trace_search": [
+    {
+      "statement": "Real-time express inquiry -- asc",
+      "cpCode": "ZTO",
+      "mailNo": "78419465172516",
+      "tel": "3473",
+      "orderType": "asc"
+    },
+    {
+      "statement": "Real-time express inquiry -- desc",
+      "cpCode": "ZTO",
+      "mailNo": "78419465172516",
+      "tel": "3473",
+      "orderType": "desc"
+    }
+  ]
+}

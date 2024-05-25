@@ -1,0 +1,15 @@
+{
+  "protocol": "https",
+  "host": "eolink.o.apispace.com",
+  "port": "443",
+  "x_apispace_token": "123",
+  "xhdq": "123",
+  "joke": "123",
+  "user_account": "123",
+  "user_password": "123",
+  "db_host": "123",
+  "db_port": "123",
+  "db_user": "123",
+  "db_password": "123456987",
+  "db_database_name": "123"
+}

@@ -1,60 +1,57 @@
-# web_ui_demo
+# openapi_test_demo
 
 #### 介绍
-web自动化测试框架
+openapi自动化测试框架
 
 #### 软件架构
-PO模式三层分离架构
-
+python + requests + pytest + parametrize + json / http、https + allure + mysql + log
+接口自动化测试框架
 
 #### 目录结构
 
-    |--web自动化测试框架 # 主目录
-       ├─ base # 封装等待元素，页面元素的基本操作方法
+    |--openapi自动化测试框架 # 主目录
+       ├─ api # 封装api,用于test调用
+         └─ http_base_manager.py  # http连接管理工具
+         └─ xxx.py  # 接口封装
        ├─ common # 常用工具
+         └─ mysql_utils.py  # mysql连接的封装
+         └─ read_json.py  # 封装测试case的json文件数据读取
          └─ render_template.py  # 渲染配置文件
          └─ template.conf  # 模板文件
-         └─ env.json  # 使用的环境数据
-         └─ read_json.py  # 封装测试case数据读取
-         └─ utils  # 获取/推出 driver 工具
        ├─ config # 配置文件读取
-         └─ config.ini  # 真正运行时的配置文件
-         └─ confRead.py   # 封装读取配置文件
+         └─ config.ini  # 配置文件
+         └─ confRead.py   # 封装读取配置文件，可修改代码中的配置文件名字
        ├─ data # 测试数据相关文件
-         └─ xxx.json #测试数据
-         └─ xxx.json #测试数据
-       ├─ log # 运行时日志
-         └─ xxx.log # 日志
-       ├─ page # 封装元素获取、操作、业务执行
-         └─ xxx.py # 模块封装文件
-       ├─ report # allure测试报告	
+         └─ xxx.json # test测试数据
+         └─ xxx.json # test测试数据
+       ├─ log # 日志
+         └─ xxx.log # 日志记录
+       ├─ pytest_html # pytest_html 测试报告
+         └─ report.html # 报告
+       ├─ report # allure测试报告目录
+         └─ index.html # allure测试报告
        ├─ scripts # 测试脚本调用
-         └─ conftest.py # 运行用例前置、后置配置，生成allure报告
+         └─ conftest.py # 运行用例前置、后置配置、配置全局日志、自动生成allure测试报告
          └─ test_xxx.py # 运行的用例
-       ├─ tmp # allure运行时数据、截图
+         └─ zzz.py # 一键生成 api test调用脚本
+       ├─ tmp # allure运行时数据、截图等
        ├─ global_config.py	  # 公用log日志封装
-       ├─ pytest.ini  	#pytest配置	  
+       ├─ pytest.ini  	# pytest配置	  
        └─ README.md
 
 #### 使用说明
-
-首先生成运行时的config配置文件
+首先生成运行时的config配置文件,或者修改confRead.py中指定config文件
 ```
 cd cd .\common\
 python render_template.py template.conf test_env.json ../config/config.ini
 ```
 
-在项目根目录 多进程执行，命令行执行
+生成pytest-html测试报告
 ```
-pytest -n 2
-```
-
-单进程执行，注释掉 test_demo_user_home.py 以外test文件中 # @pytest.mark.usefixtures("demo_user_login")
-```
-pytest -v -m 'smoke'
+pytest -v -m 'nj' --html=./pytest_html/report.html --self-contained-html
 ```
 
-在项目根目录 指定config配置文件执行
+执行只生成allure测试报告
 ```
-pytest --confcutdir=./config -v -m 'smoke'
+pytest -v -m 'nj'
 ```
