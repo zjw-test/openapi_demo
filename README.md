@@ -35,12 +35,13 @@ python + requests + pytest + parametrize + json / http、https + allure + mysql 
          └─ test_xxx.py # 运行的用例
          └─ zzz.py # 一键生成 api test调用脚本
        ├─ tmp # allure运行时数据、截图等
+         └─ xxx.json # 运行的数据
        ├─ global_config.py	  # 公用log日志封装
        ├─ pytest.ini  	# pytest配置	  
        └─ README.md
 
 #### 使用说明
-首先生成运行时的config配置文件,或者修改confRead.py中指定config文件
+根据需要,根据模版生成config配置文件,可直接修改confRead.py 中 config.ini 运行其它测试环境
 ```
 cd cd .\common\
 python render_template.py template.conf test_env.json ../config/config.ini

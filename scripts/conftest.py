@@ -16,8 +16,8 @@ from global_config import config_log
 import pytest
 from api.xh_manager import XhManager
 
-config_log()
-# 全局配置日志
+config_log()  # 全局配置日志
+
 
 def is_master():
     """判断当前是否为主节点"""
