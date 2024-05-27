@@ -1,0 +1,3 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sat May 25 11:04:43 CST 2024","Sat May 25 11:04:43 CST 2024","293","scripts","test_nj","TestKd","","","test_nj_search[nj_search xi]","通过查询参数获取相关的脑筋急转弯"
+"passed","Sat May 25 11:04:43 CST 2024","Sat May 25 11:04:44 CST 2024","411","scripts","test_nj","TestKd","","","test_nj_search[nj_search pi]","通过查询参数获取相关的脑筋急转弯"
