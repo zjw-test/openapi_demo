@@ -36,6 +36,7 @@ python + requests + pytest + parametrize + json / http、https + allure + mysql 
          └─ zzz.py # 一键生成 api test调用脚本
        ├─ tmp # allure运行时数据、截图等
          └─ xxx.json # 运行的数据
+       ├─ Dockerfile	  # dockerfile 镜像构建
        ├─ global_config.py	  # 公用log日志封装
        ├─ pytest.ini  	# pytest配置	  
        └─ README.md
@@ -56,3 +57,7 @@ pytest -v -m 'nj' --html=./pytest_html/report.html --self-contained-html
 ```
 pytest -v -m 'nj'
 ```
+
+docker 镜像构建，修改Dockerfile FROM 地址。在项目根目录 执行 
+
+```docker build -t openapi_base .```
